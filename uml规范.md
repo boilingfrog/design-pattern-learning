@@ -10,6 +10,16 @@
 
 <img src="/img/uml-demo.png"  alt="uml" align=center />
 
+这里根据上面的这个例子，我们一一来展开分析  
+
+#### 类
+
+类是具有相似结构、行为和关系的一组对象的描述符，是面向对象系统中最重要的构造块  
+
+<img src="/img/uml-class.png"  alt="uml" align=center />
+
+
+
 ### 参考
 
 【大话设计模式】一本关于设计模式不错的书籍   
