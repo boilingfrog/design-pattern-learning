@@ -6,12 +6,9 @@
 
 ### UML 
 
-这里根据大话设计模式中的例子，重新花了这个关系的 uml 类图  
+这里根据【大话设计模式中】中动物和鸟关系的例子，重新画了这个关系的 uml 类图    
 
 <img src="/img/uml-demo.png"  alt="uml" align=center />
-
-
-
 
 ### 参考
 
