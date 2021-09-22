@@ -7,6 +7,8 @@
   - [类](#%E7%B1%BB)
   - [类的关系](#%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB)
     - [1、依赖关系](#1%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB)
+    - [2、继承关系](#2%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB)
+    - [实现关系](#%E5%AE%9E%E7%8E%B0%E5%85%B3%E7%B3%BB)
   - [参考](#%E5%8F%82%E8%80%83)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -41,9 +43,9 @@
 
 前面的符号需要我们特殊注意  
 
-- + 表示public
-- - 表示private
-- # 表示protected
+- "+" 表示public
+- "-" 表示private
+- "#" 表示protected
 
 ### 类的关系
 
@@ -51,7 +53,17 @@
 
 依赖关系，就是构造这个类的时候需要依赖其他的类，比如：动物，动物有新陈代谢，新陈代谢就需要依赖水，食物，氧气，所以动物依赖水和氧气，他们之间及时依赖关系。  
 
+<img src="/img/uml-rely.png"  alt="uml" align=center />
 
+#### 2、继承关系
+
+继承（泛化）关系，它指定了子类如何特化父类的所有特征和行为。用带空心三角形的实线表示。   
+
+图中的动物，鸟，鸭，唐老鸭之前的关系就是继承的关系   
+
+<img src="/img/uml-inherit.png"  alt="uml" align=center />
+
+#### 实现关系
 
 
 ### 参考
