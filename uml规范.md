@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [如何画UML](#%E5%A6%82%E4%BD%95%E7%94%BBuml)
+  - [前言](#%E5%89%8D%E8%A8%80)
+  - [UML](#uml)
+    - [类](#%E7%B1%BB)
+  - [参考](#%E5%8F%82%E8%80%83)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## 如何画UML
 
 ### 前言
@@ -18,6 +30,19 @@
 
 <img src="/img/uml-class.png"  alt="uml" align=center />
 
+上面的图片，从第一格往下面分析  
+
+- 第一层 显示类的名称，如果是抽象类就用斜体表示  
+
+- 第二层 类的特性，通常是字段和属性  
+
+- 第三层 类的操作，通常是方法和行为
+
+前面的符号需要我们特殊注意  
+
+- + 表示public
+- - 表示private
+- # 表示protected
 
 
 ### 参考
