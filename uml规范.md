@@ -63,7 +63,13 @@
 
 <img src="/img/uml-inherit.png"  alt="uml" align=center />
 
-#### 实现关系
+#### 3、实现关系
+
+一种类与接口的关系，表示类是接口所有特征和行为的实现。  
+
+用带空心三角形的虚线表示  
+
+<img src="/img/uml-interface.png"  alt="uml" align=center />
 
 
 ### 参考
