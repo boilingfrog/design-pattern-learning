@@ -1,12 +1,13 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
-- [简单工厂模式](#%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
-  - [定义](#%E5%AE%9A%E4%B9%89)
-  - [优点](#%E4%BC%98%E7%82%B9)
-  - [缺点](#%E7%BC%BA%E7%82%B9)
-  - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
+- [工厂模式](#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
+  - [简单工厂模式](#%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
+    - [定义](#%E5%AE%9A%E4%B9%89)
+    - [优点](#%E4%BC%98%E7%82%B9)
+    - [缺点](#%E7%BC%BA%E7%82%B9)
+    - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
+  - [工厂方法模式(Factory Method)](#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8Ffactory-method)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -85,6 +86,8 @@ func (*banana) Color() string {
 总结下：  
 
 主要是通过 if 来判断逻辑，当我们有新的实现需要加入，只需要添加对应的 if 判断就好了。    
+
+<img src="/img/factory-simple.png" alt="factory" style="zoom:50%;" />
 
 ### 工厂方法模式(Factory Method)
 
