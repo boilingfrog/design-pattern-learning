@@ -8,6 +8,10 @@
     - [缺点](#%E7%BC%BA%E7%82%B9)
     - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
   - [工厂方法模式(Factory Method)](#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8Ffactory-method)
+    - [定义](#%E5%AE%9A%E4%B9%89-1)
+    - [优点](#%E4%BC%98%E7%82%B9-1)
+    - [缺点](#%E7%BC%BA%E7%82%B9-1)
+    - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -139,7 +143,15 @@ func (*banana) Color() string {
 }
 ```
 
+### 抽象工厂模式(Abstract Factory)
 
+#### 定义
+
+抽象工厂模式（Abstract Factory），提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。  
+
+#### 优点
+
+#### 缺点
 
 
 
