@@ -10,6 +10,10 @@ func main() {
 	fmt.Println(banana.Fruit())
 }
 
+type FruitFactory interface {
+	Fruit() string
+}
+
 type apple struct{}
 
 func (*apple) Fruit() string {
