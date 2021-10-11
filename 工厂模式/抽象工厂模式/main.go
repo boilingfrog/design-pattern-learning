@@ -10,27 +10,44 @@ func main() {
 	fmt.Println(w.Apple())
 }
 
+type fruit struct {
+	Name   string
+	Origin string
+}
+
 type FruitFactory interface {
-	Apple() string
-	Banana() string
+	Apple() fruit
+	Banana() fruit
 }
 
 type HainanFruit struct{}
 
-func (*HainanFruit) Apple() string {
-	return "我是海南的苹果"
+func (*HainanFruit) Apple() fruit {
+	return fruit{
+		Name:   "我是 苹果；",
+		Origin: "产地 海南",
+	}
 }
 
-func (*HainanFruit) Banana() string {
-	return "我是海南的香蕉"
+func (*HainanFruit) Banana() fruit {
+	return fruit{
+		Name:   "我是 香蕉；",
+		Origin: "产地 海南",
+	}
 }
 
 type WuhanFruit struct{}
 
-func (*WuhanFruit) Apple() string {
-	return "我是武汉的苹果"
+func (*WuhanFruit) Apple() fruit {
+	return fruit{
+		Name:   "我是 苹果；",
+		Origin: "产地 武汉",
+	}
 }
 
-func (*WuhanFruit) Banana() string {
-	return "我是武汉的香蕉"
+func (*WuhanFruit) Banana() fruit {
+	return fruit{
+		Name:   "我是 香蕉；",
+		Origin: "产地 武汉",
+	}
 }
