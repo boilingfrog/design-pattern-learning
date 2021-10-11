@@ -162,6 +162,10 @@ func (*banana) Fruit() string {
 }
 ```
 
+总结：  
+
+工厂方法模式实现的时，客户端需要决定实例化哪一个工厂来决定选择那种水果，还是需要判断的，只不过这个判断交给客户端进行了。简单工厂是修改工厂类，这里只需要修改客户端。  
+
 UML 类图  
 
 <img src="/img/factory-method.png" alt="factory" style="zoom:50%;" />
