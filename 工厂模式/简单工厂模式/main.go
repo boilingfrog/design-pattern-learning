@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	f := newFruit("apple")
+	f := getFruit("apple")
 	fmt.Println(f.Fruit())
 }
 
@@ -11,7 +11,7 @@ type FruitFactory interface {
 	Fruit() string
 }
 
-func newFruit(t string) FruitFactory {
+func getFruit(t string) FruitFactory {
 	switch t {
 	case "apple":
 		return &apple{}
