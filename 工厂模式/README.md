@@ -162,6 +162,10 @@ func (*banana) Fruit() string {
 }
 ```
 
+UML 类图  
+
+<img src="/img/factory-method.png" alt="factory" style="zoom:50%;" />
+
 ### 抽象工厂模式(Abstract Factory)
 
 #### 定义
