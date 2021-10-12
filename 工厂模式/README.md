@@ -271,6 +271,18 @@ func (gd HainanFruitFactory) ChooseBanana() ProductInterface {
 }
 ```
 
+UML 类图  
+
+<img src="/img/factory-abstract.png" alt="factory" style="zoom:50%;" />
+
+总结：  
+
+这里抽象出了两个工厂，然后每个工厂中实现自己的方法。  
+
+客户端在使用的时候只需要在应用中初始化一次，所以改变工厂就很简单，只需要改变具体地工厂就能使用对应的配置信息。   
+
+针对抽象工厂模式，我们会声明那个工厂，当然进一步扩展，我们可以结合依赖注入，上游将工厂注入进来，下游根据注入的工厂进行初始化，这样就更加灵活了，依赖注入模式，我们后面在接着分析。  
+
 ### 参考  
 
 【工厂方法模式】https://wiki.jikexueyuan.com/project/java-design-pattern/factory-pattern.html  
@@ -278,6 +290,7 @@ func (gd HainanFruitFactory) ChooseBanana() ProductInterface {
 【极客时间】设计模式之美  
 【抽象工厂】https://www.liaoxuefeng.com/wiki/1252599548343744/1281319134822433    
 【简单工厂模式，工厂方法模式和抽象工厂模式的异同】https://blog.csdn.net/gatieme/article/details/17525805  
+【大话设计模式】https://book.douban.com/subject/2334288/  
 
 
 
