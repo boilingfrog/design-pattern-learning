@@ -180,6 +180,10 @@ UML 类图
 
 抽象工厂模式除了具有工厂方法模式的优点外，最主要的优点就是可以在类的内部对产品族进行约束。所谓的产品族，一般或多或少的都存在一定的关联，抽象工厂模式就可以在类内部对产品族的关联关系进行定义和描述，而不必专门引入一个新的类来进行管理。  
 
+- 易于交换产品系列，由于具体的工场类，在使用的时候只需要在应用中初始化一次，所以改变工厂就很简单，只需要改变具体地工厂就能使用对应的配置信息。   
+
+- 它让具体地创建过程和客户端分离，客户端通过他们的抽象接口操作实例，产品的具体类名也和具体工厂分离，不会出现在客户端代码中。  
+
 #### 缺点
 
 抽象工厂模式在于难于应付“新对象”的需求变动。难以支持新种类的产品。难以扩展抽象工厂以生产新种类的产品。这是因为抽象工厂几乎确定了可以被创建的产品集合，支持新种类的产品就需要扩展该工厂接口，这将涉及抽象工厂类及其所有子类的改变。   
@@ -202,76 +206,68 @@ package main
 import "fmt"
 
 func main() {
-	h := HainanFruit{}
-	fmt.Println(h.Apple())
-	fmt.Println(h.Banana())
-
-	w := WuhanFruit{}
-	fmt.Println(w.Apple())
-	fmt.Println(w.Banana())
+	f := WuhanFruitFactory{}
+	b := f.ChooseApple()
+	b.Fruit()
 }
 
-type appleInterface interface {
-	Apple()
+type FruitInterface interface {
+	ChooseApple() ProductInterface
+	ChooseBanana() ProductInterface
 }
 
-type appleInfo struct {
-	Name   string
-	Origin string
+type ProductInterface interface {
+	Fruit()
 }
 
-func (appleInfo) Apple() {
-	panic("implement me")
+type HainanApple struct {
 }
 
-type bananaInterface interface {
-	Banana()
+func (h HainanApple) Fruit() {
+	fmt.Println("我是苹果，来自海南")
 }
 
-type bananaInfo struct {
-	Name   string
-	Origin string
+type HainanBanana struct {
 }
 
-func (bananaInfo) Banana() {
-	panic("implement me")
+func (h HainanBanana) Fruit() {
+	fmt.Println("我是香蕉，来自海南")
 }
 
-type FruitFactory interface {
-	Apple() appleInfo
-	Banana() bananaInfo
+type WuhanApple struct {
 }
 
-type HainanFruit struct{}
-
-func (*HainanFruit) Apple() appleInfo {
-	return appleInfo{
-		Name:   "我是 苹果；",
-		Origin: "产地 海南",
-	}
+func (w WuhanApple) Fruit() {
+	fmt.Println("我是苹果，来自武汉")
 }
 
-func (*HainanFruit) Banana() bananaInfo {
-	return bananaInfo{
-		Name:   "我是 香蕉；",
-		Origin: "产地 海南",
-	}
+type WuhanBanana struct {
 }
 
-type WuhanFruit struct{}
-
-func (*WuhanFruit) Apple() appleInfo {
-	return appleInfo{
-		Name:   "我是 苹果；",
-		Origin: "产地 武汉",
-	}
+func (w WuhanBanana) Fruit() {
+	fmt.Println("我是香蕉，来自武汉")
 }
 
-func (*WuhanFruit) Banana() bananaInfo {
-	return bananaInfo{
-		Name:   "我是 香蕉；",
-		Origin: "产地 武汉",
-	}
+type WuhanFruitFactory struct {
+}
+
+func (w WuhanFruitFactory) ChooseApple() ProductInterface {
+	return WuhanApple{}
+}
+
+func (w WuhanFruitFactory) ChooseBanana() ProductInterface {
+	return WuhanBanana{}
+}
+
+type HainanFruitFactory struct {
+}
+
+func (gd HainanFruitFactory) ChooseApple() ProductInterface {
+	return HainanApple{}
+}
+
+func (gd HainanFruitFactory) ChooseBanana() ProductInterface {
+	return HainanBanana{}
 }
 ```
 

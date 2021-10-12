@@ -3,74 +3,66 @@ package main
 import "fmt"
 
 func main() {
-	h := HainanFruit{}
-	fmt.Println(h.Apple())
-	fmt.Println(h.Banana())
-
-	w := WuhanFruit{}
-	fmt.Println(w.Apple())
-	fmt.Println(w.Banana())
+	f := WuhanFruitFactory{}
+	b := f.ChooseApple()
+	b.Fruit()
 }
 
-type appleInterface interface {
-	Apple()
+type FruitInterface interface {
+	ChooseApple() ProductInterface
+	ChooseBanana() ProductInterface
 }
 
-type appleInfo struct {
-	Name   string
-	Origin string
+type ProductInterface interface {
+	Fruit()
 }
 
-func (appleInfo) Apple() {
-	panic("implement me")
+type HainanApple struct {
 }
 
-type bananaInterface interface {
-	Banana()
+func (h HainanApple) Fruit() {
+	fmt.Println("我是苹果，来自海南")
 }
 
-type bananaInfo struct {
-	Name   string
-	Origin string
+type HainanBanana struct {
 }
 
-func (bananaInfo) Banana() {
-	panic("implement me")
+func (h HainanBanana) Fruit() {
+	fmt.Println("我是香蕉，来自海南")
 }
 
-type FruitFactory interface {
-	Apple() appleInfo
-	Banana() bananaInfo
+type WuhanApple struct {
 }
 
-type HainanFruit struct{}
-
-func (*HainanFruit) Apple() appleInfo {
-	return appleInfo{
-		Name:   "我是 苹果；",
-		Origin: "产地 海南",
-	}
+func (w WuhanApple) Fruit() {
+	fmt.Println("我是苹果，来自武汉")
 }
 
-func (*HainanFruit) Banana() bananaInfo {
-	return bananaInfo{
-		Name:   "我是 香蕉；",
-		Origin: "产地 海南",
-	}
+type WuhanBanana struct {
 }
 
-type WuhanFruit struct{}
-
-func (*WuhanFruit) Apple() appleInfo {
-	return appleInfo{
-		Name:   "我是 苹果；",
-		Origin: "产地 武汉",
-	}
+func (w WuhanBanana) Fruit() {
+	fmt.Println("我是香蕉，来自武汉")
 }
 
-func (*WuhanFruit) Banana() bananaInfo {
-	return bananaInfo{
-		Name:   "我是 香蕉；",
-		Origin: "产地 武汉",
-	}
+type WuhanFruitFactory struct {
+}
+
+func (w WuhanFruitFactory) ChooseApple() ProductInterface {
+	return WuhanApple{}
+}
+
+func (w WuhanFruitFactory) ChooseBanana() ProductInterface {
+	return WuhanBanana{}
+}
+
+type HainanFruitFactory struct {
+}
+
+func (gd HainanFruitFactory) ChooseApple() ProductInterface {
+	return HainanApple{}
+}
+
+func (gd HainanFruitFactory) ChooseBanana() ProductInterface {
+	return HainanBanana{}
 }
