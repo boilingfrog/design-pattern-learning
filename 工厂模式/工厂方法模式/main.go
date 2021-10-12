@@ -3,25 +3,25 @@ package main
 import "fmt"
 
 func main() {
-	apple := apple{}
+	apple := appleFactory{}
 	fmt.Println(apple.Fruit())
 
-	banana := banana{}
+	banana := bananaFactory{}
 	fmt.Println(banana.Fruit())
 }
 
-type FruitFactory interface {
+type Fruit interface {
 	Fruit() string
 }
 
-type apple struct{}
+type appleFactory struct{}
 
-func (*apple) Fruit() string {
+func (*appleFactory) Fruit() string {
 	return "我是苹果，我很好吃"
 }
 
-type banana struct{}
+type bananaFactory struct{}
 
-func (*banana) Fruit() string {
+func (*bananaFactory) Fruit() string {
 	return "我是香蕉，我最好吃了"
 }
