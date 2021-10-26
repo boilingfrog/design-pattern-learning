@@ -50,57 +50,54 @@
 package main
 
 import (
-	"crypto/rsa"
 	"fmt"
-	"net/http"
 )
 
 func main() {
-	wx := WeixinPay{}
-	fmt.Println(wx.Name(), wx.Order())
-
-	al := AliPay{}
-	fmt.Println(al.Name(), al.Order())
+	payment := NewPayment("小明", 12, &Weixin{})
+	payment.Pay()
+	fmt.Println()
+	apay := NewPayment("小明", 12, &Ali{})
+	apay.Pay()
 }
 
-// Payment interface
-type Payment interface {
-	Name() string
-	Order() string
+type Payment struct {
+	context  *PaymentContext
+	strategy PaymentStrategy
 }
 
-type WeixinPay struct {
-	conf      map[string]string
-	notifyURL string
-	client    *http.Client
+type PaymentContext struct {
+	Account string
+	Money   int
 }
 
-func (w *WeixinPay) Name() string {
-
-	return "我是：微信支付；"
+func NewPayment(account string, money int, strategy PaymentStrategy) *Payment {
+	return &Payment{
+		context: &PaymentContext{
+			Account: account,
+			Money:   money,
+		},
+		strategy: strategy,
+	}
 }
 
-func (w *WeixinPay) Order() string {
-
-	return "订单号：wx-001；"
+func (p *Payment) Pay() {
+	p.strategy.Pay(p.context)
 }
 
-type AliPay struct {
-	privateKey   *rsa.PrivateKey
-	aliPublicKey *rsa.PublicKey
-	notifyURL    string
-	appID        string
-	partner      string
-	sellerID     string
+type PaymentStrategy interface {
+	Pay(*PaymentContext)
 }
 
-func (a *AliPay) Name() string {
+type Weixin struct{}
 
-	return "我是：阿里支付；"
+func (*Weixin) Pay(ctx *PaymentContext) {
+	fmt.Printf("Pay %d元 to %s by weixin", ctx.Money, ctx.Account)
 }
 
-func (a *AliPay) Order() string {
+type Ali struct{}
 
-	return "订单号：al-0010；"
+func (*Ali) Pay(ctx *PaymentContext) {
+	fmt.Printf("Pay %d元 to %s by ali", ctx.Money, ctx.Account)
 }
 ```
