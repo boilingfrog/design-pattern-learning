@@ -7,6 +7,7 @@
   - [缺点](#%E7%BC%BA%E7%82%B9)
   - [使用场景](#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF)
   - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
+  - [策略模式和工厂模式的区别](#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB)
   - [参考](#%E5%8F%82%E8%80%83)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
