@@ -7,6 +7,7 @@
   - [缺点](#%E7%BC%BA%E7%82%B9)
   - [使用场景](#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF)
   - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
+  - [参考](#%E5%8F%82%E8%80%83)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -114,6 +115,11 @@ func (a *Ali) Pay(account string, money int) {
 来看下结构图  
 
 <img src="/img/uml-strategy.png" alt="strategy" />
+
+### 参考
+
+【大话设计模式】https://book.douban.com/subject/2334288/  
+【极客时间】设计模式之美    
 
 
 
