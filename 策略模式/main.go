@@ -5,49 +5,58 @@ import (
 )
 
 func main() {
-	payment := NewPayment("小明", 12, &Weixin{})
-	payment.Pay()
+	payment := NewPayment(&Weixin{
+		&PaymentConf{
+			appId:     "wx1323234343434",
+			notifyURL: "weixin.notifyURL.com",
+		},
+	})
+	payment.Pay("小明", 12)
 	fmt.Println()
-	apay := NewPayment("小明", 12, &Ali{})
-	apay.Pay()
+	apay := NewPayment(&Ali{
+		&PaymentConf{
+			appId:     "al1323234343434",
+			notifyURL: "ali.notifyURL.com",
+		},
+	})
+	apay.Pay("小红", 16)
 }
 
-type Payment struct {
-	context  *PaymentContext
+type Context struct {
 	strategy PaymentStrategy
 }
 
-type PaymentContext struct {
-	Account string
-	Money   int
+type PaymentConf struct {
+	appId     string
+	notifyURL string
 }
 
-func NewPayment(account string, money int, strategy PaymentStrategy) *Payment {
-	return &Payment{
-		context: &PaymentContext{
-			Account: account,
-			Money:   money,
-		},
+func NewPayment(strategy PaymentStrategy) *Context {
+	return &Context{
 		strategy: strategy,
 	}
 }
 
-func (p *Payment) Pay() {
-	p.strategy.Pay(p.context)
+func (p *Context) Pay(account string, money int) {
+	p.strategy.Pay(account, money)
 }
 
 type PaymentStrategy interface {
-	Pay(*PaymentContext)
+	Pay(account string, money int)
 }
 
-type Weixin struct{}
-
-func (*Weixin) Pay(ctx *PaymentContext) {
-	fmt.Printf("Pay %d元 to %s by weixin", ctx.Money, ctx.Account)
+type Weixin struct {
+	*PaymentConf
 }
 
-type Ali struct{}
+func (w *Weixin) Pay(account string, money int) {
+	fmt.Printf("Pay %d元 to %s by weixin", money, account)
+}
 
-func (*Ali) Pay(ctx *PaymentContext) {
-	fmt.Printf("Pay %d元 to %s by ali", ctx.Money, ctx.Account)
+type Ali struct {
+	*PaymentConf
+}
+
+func (a *Ali) Pay(account string, money int) {
+	fmt.Printf("Pay %d元 to %s by ali", money, account)
 }
