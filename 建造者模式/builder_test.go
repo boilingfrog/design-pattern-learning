@@ -126,3 +126,7 @@ func TestResourcePoolConfigBuilder(t *testing.T) {
 		})
 	}
 }
+
+func TestRateLimiter(t *testing.T) {
+	RateLimiter(MaxThreads(10), IsLimitTime(true))
+}

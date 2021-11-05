@@ -54,7 +54,7 @@ func NewResourcePoolConfig(name string, maxTotal, maxIdle, minIdle *int) (*Resou
 	return rc, nil
 }
 
-// -------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 
 func NewResourcePoolConfigSet(name string) (*ResourcePoolConfig, error) {
 	if name == "" {
@@ -96,7 +96,7 @@ func (rc *ResourcePoolConfig) SetMaxTotal(maxTotal int) error {
 	return nil
 }
 
-// -------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 
 // ResourcePoolConfigBuilder ...
 type ResourcePoolConfigBuilder struct {
@@ -175,4 +175,54 @@ func (rb *ResourcePoolConfigBuilder) Build() (*ResourcePoolConfig, error) {
 		maxIdle:  rb.maxIdle,
 		minIdle:  rb.minIdle,
 	}, nil
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+type params struct {
+	Key         string `json:"key"`
+	MaxThreads  int64  `json:"maxThreads"`  // 最大的线程数
+	ExpireTime  int64  `json:"expireTime"`  // 到期时间，秒
+	IsLimitTime bool   `json:"isLimitTime"` //是否在一定时间内限速
+}
+
+func RateLimiter(param ...Param) {
+	ps := evaluateParam(param)
+
+	fmt.Println(ps)
+}
+
+type Param func(*params)
+
+func evaluateParam(param []Param) *params {
+	ps := &params{}
+
+	for _, p := range param {
+		p(ps)
+	}
+	return ps
+}
+
+func Key(key string) Param {
+	return func(o *params) {
+		o.Key = key
+	}
+}
+
+func MaxThreads(maxThreads int64) Param {
+	return func(o *params) {
+		o.MaxThreads = maxThreads
+	}
+}
+
+func ExpireTime(expireTime int64) Param {
+	return func(o *params) {
+		o.ExpireTime = expireTime
+	}
+}
+
+func IsLimitTime(limit bool) Param {
+	return func(o *params) {
+		o.IsLimitTime = limit
+	}
 }

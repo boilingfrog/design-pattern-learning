@@ -3,10 +3,10 @@
 
 - [建造者模式](#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F)
   - [定义](#%E5%AE%9A%E4%B9%89)
+  - [与工厂模式的区别](#%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB)
   - [适用范围](#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4)
   - [优点](#%E4%BC%98%E7%82%B9)
   - [缺点](#%E7%BC%BA%E7%82%B9)
-  - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
   - [参考](#%E5%8F%82%E8%80%83)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -230,20 +230,89 @@ func (rb *ResourcePoolConfigBuilder) Build() (*ResourcePoolConfig, error) {
 
 建造者模式，避免了无效状态的存在，因为是设置构建者的变量，构建的变量符合条件之后，一次性的创建对象，这样创建的对象就一直处于有效状态了。  
 
+不过 go 中函数传值可以这样使用，一般公共库的时候都会选择这中方式，方便后期的扩展  
+
+```go
+type params struct {
+	Key         string `json:"key"`
+	MaxThreads  int64  `json:"maxThreads"`  // 最大的线程数
+	ExpireTime  int64  `json:"expireTime"`  // 到期时间，秒
+	IsLimitTime bool   `json:"isLimitTime"` //是否在一定时间内限速
+}
+
+type Param func(*params)
+
+func evaluateParam(param []Param) *params {
+	ps := &params{}
+
+	for _, p := range param {
+		p(ps)
+	}
+	return ps
+}
+
+func Key(key string) Param {
+	return func(o *params) {
+		o.Key = key
+	}
+}
+
+func MaxThreads(maxThreads int64) Param {
+	return func(o *params) {
+		o.MaxThreads = maxThreads
+	}
+}
+
+func ExpireTime(expireTime int64) Param {
+	return func(o *params) {
+		o.ExpireTime = expireTime
+	}
+}
+
+func IsLimitTime(limit bool) Param {
+	return func(o *params) {
+		o.IsLimitTime = limit
+	}
+}
+```
+
+相比于建造者模式，这种方式更其轻便，但是建造者模式也有有点，对于复杂参数的检验支持的更好   
+
+### 与工厂模式的区别
+
+工厂模式：工厂模式是用来创建不同但是相关类型的对象（继承同一父类或者接口的一组子类），由给定的参数来决定创建哪种类型的对象  
+
+建造者模式：建造者模式是用来创建一种类型的复杂对象，通过设置不同的可选参数，“定制化”地创建不同的对象。  
+
+来个栗子：  
+
+顾客走进一家餐馆点餐，我们利用工厂模式，根据用户不同的选择，来制作不同的食物，比如披萨、汉堡、沙拉。对于披萨来说，用户又有各种配料可以定制，比如奶酪、西红柿、起司，我们通过建造者模式根据用户选择的不同配料来制作披萨。  
+
 ### 适用范围
 
+1、类的必填属性放到构造函数中，强制创建对象的时候就设置。然后参数比较多，并且有必填校验   
 
+2、类的属性之间有一定的依赖关系或者约束条件  
+
+3、希望创建不可变对象  
+
+总结下就是  
+
+1、需要生成的对象具有复杂的内部结构。   
+
+2、需要生成的对象内部属性本身相互依赖。  
 
 ### 优点
 
+1、建造者独立，易扩展。  
+
+2、便于控制细节风险。  
 
 ### 缺点
 
+1、产品必须有共同点，范围有限制。  
 
-
-
-
-### 代码实现
+2、如内部变化复杂，会有很多的建造类。  
 
 ### 参考
 
