@@ -15,6 +15,8 @@
 
 ### 定义
 
+Builder 模式，中文翻译为建造者模式或者构建者模式，也有人叫它生成器模式。  
+
 建造者模式（Builder Pattern）使用多个简单的对象一步一步构建成一个复杂的对象。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。  
 
 一个 Builder 类会一步一步构造最终的对象。该 Builder 类是独立于其他对象的。  
@@ -88,6 +90,20 @@ func NewResourcePoolConfig(name string, maxTotal, maxIdle, minIdle *int) (*Resou
 我们接着讨论，如果需要传入的参数过多，我们可以使用 set() 函数来给成员变量赋值，以替代冗长的构造函数。  
 
 ```go
+const (
+	defaultMaxTotal = 10
+	defaultMaxIdle  = 10
+	defaultMinIdle  = 1
+)
+
+// ResourcePoolConfig ...
+type ResourcePoolConfig struct {
+	name     string
+	maxTotal int
+	maxIdle  int
+	minIdle  int
+}
+
 func NewResourcePoolConfigSet(name string) (*ResourcePoolConfig, error) {
 	if name == "" {
 		return nil, errors.New("name is empty")
@@ -140,6 +156,12 @@ func (rc *ResourcePoolConfig) SetMaxTotal(maxTotal int) error {
 这时候建造者模式就登场了  
 
 ```go
+const (
+	defaultMaxTotal = 10
+	defaultMaxIdle  = 10
+	defaultMinIdle  = 1
+)
+
 // ResourcePoolConfig ...
 type ResourcePoolConfig struct {
 	name     string
