@@ -53,11 +53,11 @@ func TestResourcePoolConfig(t *testing.T) {
 			wantErr: true,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got, err := NewResourcePoolConfig(tt.conf.name, IntP(tt.conf.maxTotal), IntP(tt.conf.maxIdle), IntP(tt.conf.minIdle))
-			require.Equalf(t, tt.wantErr, err != nil, "NewResourcePoolConfig() error = %v, wantErr %v", err, tt.wantErr)
-			assert.Equal(t, tt.want, got)
+	for _, item := range tests {
+		t.Run(item.name, func(t *testing.T) {
+			got, err := NewResourcePoolConfig(item.conf.name, IntP(item.conf.maxTotal), IntP(item.conf.maxIdle), IntP(item.conf.minIdle))
+			require.Equalf(t, item.wantErr, err != nil, "NewResourcePoolConfig() error = %v, wantErr %v", err, item.wantErr)
+			assert.Equal(t, item.want, got)
 		})
 	}
 }
@@ -118,15 +118,72 @@ func TestResourcePoolConfigBuilder(t *testing.T) {
 			wantErr: false,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got, err := tt.builder.Build()
-			require.Equalf(t, tt.wantErr, err != nil, "Build() error = %v, wantErr %v", err, tt.wantErr)
-			assert.Equal(t, tt.want, got)
+	for _, item := range tests {
+		t.Run(item.name, func(t *testing.T) {
+			got, err := item.builder.Build()
+			require.Equalf(t, item.wantErr, err != nil, "Build() error = %v, wantErr %v", err, item.wantErr)
+			assert.Equal(t, item.want, got)
 		})
 	}
 }
 
 func TestRateLimiter(t *testing.T) {
-	RateLimiter(MaxThreads(10), IsLimitTime(true))
+	type arg struct {
+		name string
+		opt  []Param
+	}
+	tests := []struct {
+		name    string
+		arg     *arg
+		want    *ResourcePoolConfig
+		wantErr bool
+	}{
+		{
+			name: "name empty",
+			arg: &arg{
+				name: "",
+			},
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "maxIdle < minIdle",
+			arg: &arg{
+				name: "test",
+				opt: []Param{
+					MaxTotal(0),
+					MaxIdle(10),
+					MinIdle(10),
+				},
+			},
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "success",
+			arg: &arg{
+				name: "test",
+				opt: []Param{
+					MaxTotal(defaultMaxTotal),
+					MaxIdle(defaultMaxIdle),
+					MinIdle(defaultMinIdle),
+				},
+			},
+			want: &ResourcePoolConfig{
+				name:     "test",
+				maxTotal: defaultMaxTotal,
+				maxIdle:  defaultMaxIdle,
+				minIdle:  defaultMinIdle,
+			},
+			wantErr: false,
+		},
+	}
+	for _, item := range tests {
+		t.Run(item.name, func(t *testing.T) {
+			got, err := NewResourcePoolConfigOption(item.arg.name, item.arg.opt...)
+			require.Equalf(t, item.wantErr, err != nil, "Build() error = %v, wantErr %v", err, item.wantErr)
+			assert.Equal(t, item.want, got)
+		})
+	}
+
 }
