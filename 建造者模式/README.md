@@ -255,47 +255,67 @@ func (rb *ResourcePoolConfigBuilder) Build() (*ResourcePoolConfig, error) {
 不过 go 中函数传值可以这样使用，一般公共库的时候都会选择这中方式，方便后期的扩展  
 
 ```go
-type params struct {
-	Key         string `json:"key"`
-	MaxThreads  int64  `json:"maxThreads"`  // 最大的线程数
-	ExpireTime  int64  `json:"expireTime"`  // 到期时间，秒
-	IsLimitTime bool   `json:"isLimitTime"` //是否在一定时间内限速
+const (
+	defaultMaxTotal = 10
+	defaultMaxIdle  = 10
+	defaultMinIdle  = 1
+)
+
+// ResourcePoolConfig ...
+type ResourcePoolConfig struct {
+	name     string
+	maxTotal int
+	maxIdle  int
+	minIdle  int
 }
 
-type Param func(*params)
+type Param func(*ResourcePoolConfig)
 
-func evaluateParam(param []Param) *params {
-	ps := &params{}
+func NewResourcePoolConfigOption(name string, param ...Param) (*ResourcePoolConfig, error) {
+	if name == "" {
+		return nil, errors.New("name is empty")
+	}
+	ps := &ResourcePoolConfig{
+		maxIdle:  defaultMinIdle,
+		minIdle:  defaultMinIdle,
+		maxTotal: defaultMaxTotal,
+		name:     name,
+	}
 
 	for _, p := range param {
 		p(ps)
+		fmt.Println(ps)
 	}
-	return ps
+
+	if ps.maxTotal < 0 || ps.maxIdle < 0 || ps.minIdle < 0 {
+		return nil, fmt.Errorf("args err, option: %v", ps)
+	}
+
+	if ps.maxTotal < ps.maxIdle || ps.minIdle > ps.maxIdle {
+		return nil, fmt.Errorf("args err, option: %v", ps)
+	}
+
+	return ps, nil
 }
 
-func Key(key string) Param {
-	return func(o *params) {
-		o.Key = key
-	}
-}
-
-func MaxThreads(maxThreads int64) Param {
-	return func(o *params) {
-		o.MaxThreads = maxThreads
-	}
-}
-
-func ExpireTime(expireTime int64) Param {
-	return func(o *params) {
-		o.ExpireTime = expireTime
+func MaxTotal(maxTotal int) Param {
+	return func(o *ResourcePoolConfig) {
+		o.maxTotal = maxTotal
 	}
 }
 
-func IsLimitTime(limit bool) Param {
-	return func(o *params) {
-		o.IsLimitTime = limit
+func MaxIdle(maxIdle int) Param {
+	return func(o *ResourcePoolConfig) {
+		o.maxIdle = maxIdle
 	}
 }
+
+func MinIdle(minIdle int) Param {
+	return func(o *ResourcePoolConfig) {
+		o.minIdle = minIdle
+	}
+}
+
 ```
 
 相比于建造者模式，这种方式更其轻便，但是建造者模式也有有点，对于复杂参数的检验支持的更好   

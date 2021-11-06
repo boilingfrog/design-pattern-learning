@@ -194,7 +194,6 @@ func NewResourcePoolConfigOption(name string, param ...Param) (*ResourcePoolConf
 
 	for _, p := range param {
 		p(ps)
-		fmt.Println(ps)
 	}
 
 	if ps.maxTotal < 0 || ps.maxIdle < 0 || ps.minIdle < 0 {
