@@ -3,8 +3,8 @@
 
 - [建造者模式](#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F)
   - [定义](#%E5%AE%9A%E4%B9%89)
-  - [与工厂模式的区别](#%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB)
   - [适用范围](#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4)
+  - [与工厂模式的区别](#%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB)
   - [优点](#%E4%BC%98%E7%82%B9)
   - [缺点](#%E7%BC%BA%E7%82%B9)
   - [参考](#%E5%8F%82%E8%80%83)
@@ -338,6 +338,7 @@ func IsLimitTime(limit bool) Param {
 
 ### 参考
 
+【文中的代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F  
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001   
 【建造者模式】https://www.runoob.com/design-pattern/builder-pattern.html    

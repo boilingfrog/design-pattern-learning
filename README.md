@@ -6,6 +6,8 @@
 
 [单例模式](https://www.cnblogs.com/ricklz/p/15508146.html)  
 
+[建造者模式](https://www.cnblogs.com/ricklz/p/15518658.html)
+
 #### 行为型模式  
 
 [策略模式](https://www.cnblogs.com/ricklz/p/15464813.html)
