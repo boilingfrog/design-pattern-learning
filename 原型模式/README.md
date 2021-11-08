@@ -161,7 +161,7 @@ func init() {
 
 ### 参考
 
-【文中代码】
+【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F  
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001   
 【原型模式】https://github.com/senghoo/golang-design-pattern    
