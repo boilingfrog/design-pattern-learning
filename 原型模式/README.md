@@ -165,5 +165,6 @@ func init() {
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001   
 【原型模式】https://github.com/senghoo/golang-design-pattern    
+【原文地址】https://boilingfrog.github.io/2021/11/08/%E4%BD%BF%E7%94%A8go%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/    
 
 
