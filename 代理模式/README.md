@@ -128,3 +128,4 @@ func (pr *Proxy) GiveChocolate() string {
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F    
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001    
+【代理模式】https://boilingfrog.github.io/2021/11/08/%E4%BD%BF%E7%94%A8go%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/  
