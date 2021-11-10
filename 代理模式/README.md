@@ -121,10 +121,10 @@ func (pr *Proxy) GiveChocolate() string {
 
 最后放上一张结构图  
 
-<img src="/img/uml-proxy.png" alt="proxy" />
+<img src="/img/pattern-proxy.png" alt="proxy" />
 
 ### 参考
  
-【文中代码】  
+【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F    
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001    
