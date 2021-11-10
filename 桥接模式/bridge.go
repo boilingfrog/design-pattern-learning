@@ -26,36 +26,36 @@ type HandsetBrand interface {
 	SetHandsetSoft(HandsetSoft)
 }
 
-// 华为手机
-type Huawei struct {
+// M品牌手机手机
+type HandsetBrandM struct {
 	HandsetSoft
 }
 
-func NewHuawei() *Huawei {
-	return &Huawei{}
+func NewHandsetBrandM() *HandsetBrandM {
+	return &HandsetBrandM{}
 }
 
-func (hw *Huawei) SetHandsetSoft(soft HandsetSoft) {
+func (hw *HandsetBrandM) SetHandsetSoft(soft HandsetSoft) {
 	hw.HandsetSoft = soft
 }
 
-func (hw *Huawei) Run() string {
-	return "Huawei手机-" + hw.HandsetSoft.Run()
+func (hw *HandsetBrandM) Run() string {
+	return "M品牌的手机-" + hw.HandsetSoft.Run()
 }
 
-// 苹果手机
-type Apple struct {
+// N品牌的手机
+type HandsetBrandN struct {
 	HandsetSoft
 }
 
-func NewApple() *Apple {
-	return &Apple{}
+func NewHandsetBrandN() *HandsetBrandN {
+	return &HandsetBrandN{}
 }
 
-func (ap *Apple) SetHandsetSoft(soft HandsetSoft) {
+func (ap *HandsetBrandN) SetHandsetSoft(soft HandsetSoft) {
 	ap.HandsetSoft = soft
 }
 
-func (ap *Apple) Run() string {
-	return "Apple手机-" + ap.HandsetSoft.Run()
+func (ap *HandsetBrandN) Run() string {
+	return "N品牌的手机-" + ap.HandsetSoft.Run()
 }

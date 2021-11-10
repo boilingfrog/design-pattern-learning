@@ -3,15 +3,15 @@ package 桥接模式
 import "testing"
 
 func TestBridge(t *testing.T) {
-	hw := NewHuawei()
-	hw.SetHandsetSoft(&HandsetGame{})
-	t.Log(hw.Run())
-	hw.SetHandsetSoft(&HandsetAddressList{})
-	t.Log(hw.Run())
+	nm := NewHandsetBrandM()
+	nm.SetHandsetSoft(&HandsetGame{})
+	t.Log(nm.Run())
+	nm.SetHandsetSoft(&HandsetAddressList{})
+	t.Log(nm.Run())
 
-	ap := NewApple()
-	ap.SetHandsetSoft(&HandsetGame{})
-	t.Log(ap.Run())
-	ap.SetHandsetSoft(&HandsetAddressList{})
-	t.Log(ap.Run())
+	nn := NewHandsetBrandN()
+	nn.SetHandsetSoft(&HandsetGame{})
+	t.Log(nn.Run())
+	nn.SetHandsetSoft(&HandsetAddressList{})
+	t.Log(nn.Run())
 }
