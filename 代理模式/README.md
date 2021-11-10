@@ -109,6 +109,10 @@ func (pr *Proxy) GiveChocolate() string {
 }
 ```
 
+最后放上一张结构图  
+
+<img src="/img/uml-proxy.png" alt="proxy" />
+
 ### 参考
  
 【文中代码】  
