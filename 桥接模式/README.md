@@ -32,11 +32,11 @@
 
 1、按照品牌分类实现的结构图
 
-<img src="/img/brand.jpg" alt="bridge" />
+<img src="/img/brand.jpg" alt="bridge"  style="zoom:50%;" />
 
 2、按照软件分类实现的结构图
 
-<img src="/img/brand.jpg" alt="bridge" />
+<img src="/img/brand.jpg" alt="bridge"  style="zoom:50%;" />
 
 上面的第一种和第二种实现方式  
 
@@ -44,11 +44,11 @@
 
 3、使用桥接模式实现的结构图
 
-<img src="/img/brand.jpg" alt="bridge" />
+<img src="/img/brand.jpg" alt="bridge"  style="zoom:50%;" />
 
 如果第三种也就是我们讲得物桥接模式，如果有手机品牌和软件类型的加入，只需要进行扩展就好了。  
 
-由于实现的方式是多种的，桥接模式的核心就是把这些实现独立出来，让他们自己变化。这样每种变化
+由于实现的方式是多种的，桥接模式的核心就是把这些实现独立出来，让他们自己变化。这样每种变化不会影响到其他的实现，从而达到应对变化的目的。   
 
 ### 优点
 
