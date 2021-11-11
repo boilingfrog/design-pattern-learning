@@ -13,3 +13,5 @@
 [策略模式](https://www.cnblogs.com/ricklz/p/15464813.html)
 
 #### 结构型模式
+
+[桥接模式](https://www.cnblogs.com/ricklz/p/15538606.html)  
