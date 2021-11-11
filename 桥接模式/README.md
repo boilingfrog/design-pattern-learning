@@ -32,11 +32,11 @@
 
 1、按照品牌分类实现的结构图
 
-<img src="/img/brand.jpg" alt="bridge"  style="zoom:50%;" />
+<img src="/img/bridge-brand.png" alt="bridge" />
 
 2、按照软件分类实现的结构图
 
-<img src="/img/brand.jpg" alt="bridge"  style="zoom:50%;" />
+<img src="/img/bridge-soft.png" alt="bridge"  />
 
 上面的第一种和第二种实现方式  
 
@@ -44,7 +44,7 @@
 
 3、使用桥接模式实现的结构图
 
-<img src="/img/brand.jpg" alt="bridge"  style="zoom:50%;" />
+<img src="/img/bridge.png" alt="bridge" />
 
 如果第三种也就是我们讲得物桥接模式，如果有手机品牌和软件类型的加入，只需要进行扩展就好了。  
 
