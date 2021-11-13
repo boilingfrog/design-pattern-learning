@@ -4,7 +4,7 @@ import "fmt"
 
 // 基础的播放功能
 type MediaPlayer interface {
-	play(audioType string, fileName string)
+	play(audioType, fileName string)
 }
 
 // 不同的播放器平台
@@ -54,7 +54,7 @@ func NewMediaAdapter(audioType string) *MediaAdapter {
 	}
 	return &mediaAdapter
 }
-func (m *MediaAdapter) play(audioType string, fileName string) {
+func (m *MediaAdapter) play(audioType, fileName string) {
 	switch audioType {
 	case "vlc":
 		m.MusicPlayer.playVlc(fileName)
