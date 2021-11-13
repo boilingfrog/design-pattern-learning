@@ -7,6 +7,7 @@
   - [优点](#%E4%BC%98%E7%82%B9)
   - [缺点](#%E7%BC%BA%E7%82%B9)
   - [适用范围](#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4)
+  - [装饰器模式和桥接模式的区别](#%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB)
   - [参考](#%E5%8F%82%E8%80%83)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -95,8 +96,16 @@ func TestDecorator(t *testing.T) {
 
 2、动态增加功能，动态撤销。  
 
+### 装饰器模式和桥接模式的区别
+
+两个模式都是为了解决子类过多问题, 但他们的诱因不同:  
+
+1.桥接模式对象自身有，沿着多个维度变化的趋势, 本身不稳定;  
+
+2.装饰者模式对象自身非常稳定, 只是为了增加新功能/增强原功能。  
+
 ### 参考
 
-【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F    
+【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F  
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001  
