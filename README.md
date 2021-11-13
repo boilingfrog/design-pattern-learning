@@ -15,3 +15,6 @@
 #### 结构型模式
 
 [桥接模式](https://www.cnblogs.com/ricklz/p/15538606.html)  
+
+[装饰模式](https://www.cnblogs.com/ricklz/p/15549428.html)     
+
