@@ -170,7 +170,7 @@ func TestPlayer(t *testing.T) {
 
 ### 参考
 
-【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F  
+【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F  
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001    
 【菜鸟教程】https://www.runoob.com/design-pattern/adapter-pattern.html  
