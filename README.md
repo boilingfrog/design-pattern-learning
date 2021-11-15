@@ -18,3 +18,5 @@
 
 [装饰模式](https://www.cnblogs.com/ricklz/p/15549428.html)     
 
+[适配器模式](https://www.cnblogs.com/ricklz/p/15552211.html)  
+
