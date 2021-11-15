@@ -36,7 +36,7 @@
 
 这个直接来个栗子吧  
 
-比如我们现在设计微服务，一个用户服务，一个金币服务。每个服务都提供对外的增删查改等操作。现在我们有一个需求，新用户登陆之后送用户金币。简单地调用，肯定是创建一个用户信息，之后调用金币服务给这个用户加金币。当然实际地开发中我们肯定要考虑分布式事务，保障这两个操作肯定能一起成功或失败，不能出现一个成功一个失败的场景。当然我们常规的做饭肯定是引入分布式框架，或者补偿的机制来处理。  
+比如我们现在设计微服务，一个用户服务，一个金币服务。每个服务都提供对外的增删查改等操作。现在我们有一个需求，新用户登陆之后送用户金币。简单地调用，肯定是创建一个用户信息，之后调用金币服务给这个用户加金币。当然实际地开发中我们肯定要考虑分布式事务，保障这两个操作肯定能一起成功或失败，不能出现一个成功一个失败的场景。当然我们常规的做法肯定是引入分布式框架，或者补偿的机制来处理。  
 
 其实借助于门面模式的思想也是可以处理，我们可以设计一个包裹这两个操作的新接口，让新接口在一个事务中执行两个SQL操作。   
 
@@ -106,7 +106,7 @@ func GetUserInfo(userId int) {
 
 ### 参考
 
-【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F  
+【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F  
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001   
 【外观模式】https://design-patterns.readthedocs.io/zh_CN/latest/structural_patterns/facade.html  

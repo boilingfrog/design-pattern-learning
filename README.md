@@ -20,3 +20,5 @@
 
 [适配器模式](https://www.cnblogs.com/ricklz/p/15552211.html)  
 
+[外观模式](https://www.cnblogs.com/ricklz/p/15555295.html)    
+
