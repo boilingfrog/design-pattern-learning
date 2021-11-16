@@ -22,3 +22,4 @@
 
 [外观模式](https://www.cnblogs.com/ricklz/p/15555295.html)    
 
+[组合模式](https://www.cnblogs.com/ricklz/p/15560974.html)    
