@@ -37,9 +37,9 @@
 
 ### 代码实现
 
-我们都下过象棋，对于象棋一共有32枚棋子，每方个16枚。每次下棋使用的都是这32枚棋子，只是每次移动的棋子的位置。   
+我们都下过象棋，对于象棋一共有32枚棋子，每方各16枚。每次下棋使用的都是这32枚棋子，只是每次移动的棋子的位置。   
 
-那么这32枚棋子就可以作为享元，每次下棋就不用重新初始化生成棋子。    
+那么这32枚棋子就可以作为享元，每次下棋就不用重新初始化生成棋子。只需在棋盘中放置棋子的位子，下棋的时候，更改位置即可。      
 
 ```go
 // ChessPieceUnit ...
@@ -117,3 +117,4 @@ func (cb *ChessBoard) Move(chessPieceId int, positionX, positionY int) {
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/享元模式  
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001     
+【享元模式】https://boilingfrog.github.io/2021/11/17/%E4%BD%BF%E7%94%A8go%E5%AE%9E%E7%8E%B0%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/  

@@ -23,3 +23,6 @@
 [外观模式](https://www.cnblogs.com/ricklz/p/15555295.html)    
 
 [组合模式](https://www.cnblogs.com/ricklz/p/15560974.html)    
+
+[享元模式](https://www.cnblogs.com/ricklz/p/15566002.html)      
+
