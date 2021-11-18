@@ -39,7 +39,7 @@
 
 ### 代码实现
 
-被该观察者有信息更新的时候，通知到所有的观察者。   
+被观察者有信息更新的时候，通知到所有的观察者。   
 
 ```go
 type Subject struct {
@@ -105,6 +105,10 @@ func TestObserver(t *testing.T) {
 	}
 }
 ```
+
+结构图  
+
+<img src="/img/pattern-observer.png" alt="observer" />
 
 ### 参考
 
