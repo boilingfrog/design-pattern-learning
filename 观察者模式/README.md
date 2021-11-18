@@ -3,10 +3,12 @@
 
 - [观察者模式](#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)
   - [定义](#%E5%AE%9A%E4%B9%89)
-  - [适用范围](#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4)
+  - [适用场景](#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF)
   - [优点](#%E4%BC%98%E7%82%B9)
   - [缺点](#%E7%BC%BA%E7%82%B9)
   - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
+  - [不同场景的实现方式](#%E4%B8%8D%E5%90%8C%E5%9C%BA%E6%99%AF%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F)
+  - [观察模式和发布订阅模式](#%E8%A7%82%E5%AF%9F%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F)
   - [参考](#%E5%8F%82%E8%80%83)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -110,11 +112,44 @@ func TestObserver(t *testing.T) {
 
 <img src="/img/pattern-observer.png" alt="observer" />
 
+### 不同场景的实现方式
+
+针对应用场景有下面四种实现方式  
+
+1、同步阻塞的实现方式；  
+
+2、异步非阻塞的实现方式；  
+
+3、进程内的实现方式；  
+
+4、跨进程的实现方式。
+
+栗如：可以基于消息队列实现  
+
+### 观察模式和发布订阅模式
+
+有的地方会讲观察者模式不是发布订阅模式   
+
+认为发布订阅模式相对于观察者模式多了一个 Broker 来协调信息的发送者和订阅者，而观察模式是直接通知观察者。  
+
+进而认为两者的藕合程度也是不同，观察者和被观察者，是松耦合的关系，发布者和订阅者，则完全不存在耦合。   
+
+不过感觉者没有明显的区别：  
+
+观察模式中有同步阻塞的实现方式，也有异步非阻塞的实现方式；有进程内的实现方式，也有跨进程的实现方式。  
+
+被观察者直接通知到观察者这种场景就是同步阻塞的实现方式。  
+
+在被观察者和观察者之间加入一个消息对列，这种方式使得两者能够更加的解耦，这是观察者模式中异步非阻塞的实现方式。   
+
+因此观察者模式可以认为就是发布订阅模式，当然掌握其中的精髓，然后运用到我们的业务中才是最重要的，至于是或不是其实也没那么重要了。   
+
 ### 参考
 
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/观察者模式   
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001    
 【golang-design-pattern】https://github.com/senghoo/golang-design-pattern    
+【Observer vs Pub-Sub pattern】https://hackernoon.com/observer-vs-pub-sub-pattern-50d3b27f838c  
 
 
