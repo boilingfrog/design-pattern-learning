@@ -23,7 +23,7 @@
 
 ### 适用场景
 
-1、当一个对象状态的改变需要改变其他对象，或实际对象是事先未知的或动态变化的时，可使用观察者模式；  
+1、当一个对象状态的改变需要改变其他对象，或实际对象是事先未知的或动态变化的，可使用观察者模式；  
 
 2、当应用中的一些对象必须观察其他对象时，可使用该模式。但仅能在有限时间内或特定情况下使用。
 
@@ -151,5 +151,6 @@ func TestObserver(t *testing.T) {
 【极客时间】https://time.geekbang.org/column/intro/100039001    
 【golang-design-pattern】https://github.com/senghoo/golang-design-pattern    
 【Observer vs Pub-Sub pattern】https://hackernoon.com/observer-vs-pub-sub-pattern-50d3b27f838c  
+【观察者模式】https://boilingfrog.github.io/2021/11/18/%E4%BD%BF%E7%94%A8go%E5%AE%9E%E7%8E%B0%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/  
 
 
