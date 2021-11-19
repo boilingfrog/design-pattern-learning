@@ -50,6 +50,115 @@
 
 ### 代码实现
 
+考试时候试卷，对于试题部分，同一场考试内容都是一样的。试卷做完交卷只是我们每人个人填写的答案不同，那么试题就可以作为模板，我们只用去写答案。  
+
+```go
+type TestPaperImpl interface {
+	testQuestion1()
+	testQuestion2()
+	Answer1()
+	Answer2()
+}
+
+type TestPaper struct {
+}
+
+func (t *TestPaper) testQuestion1() {
+	fmt.Println("问题：中国有多少个民族")
+}
+
+func (t *TestPaper) testQuestion2() {
+	fmt.Println("问题：中国有多大")
+}
+
+func (t *TestPaper) Answer1() {
+}
+
+func (t *TestPaper) Answer2() {
+}
+
+// 封装具体步骤
+func doPaper(paper TestPaperImpl) {
+	paper.testQuestion1()
+	paper.Answer1()
+
+	paper.testQuestion2()
+	paper.Answer2()
+}
+
+type student1 struct {
+	TestPaper
+}
+
+func (s *student1) Answer1() {
+	fmt.Println("答案：56")
+}
+
+func (s *student1) Answer2() {
+	fmt.Println("答案：很大")
+}
+
+type student2 struct {
+	TestPaper
+}
+
+func (s *student2) Answer1() {
+	fmt.Println("答案：51")
+}
+
+func (s *student2) Answer2() {
+	fmt.Println("答案：不知道")
+}
+```
+
+测试文件  
+
+```go
+func TestTestPaper(t *testing.T) {
+	st1 := &student1{}
+	doPaper(st1)
+
+	fmt.Println("++++++++++++++")
+	st2 := &student2{}
+	doPaper(st2)
+}
+```
+
+结果  
+
+```
+问题：中国有多少个民族
+答案：56
+问题：中国有多大
+答案：很大
+++++++++++++++
+问题：中国有多少个民族
+答案：51
+问题：中国有多大
+答案：不知道
+```
+
+### 回调  
+
+回调起到的作用和模板模式一样  
+
+相对于普通的函数调用来说，回调是一种双向调用关系。A类事先注册某个函数F到B类，A类在调用B类的P函数的时候，B类反过来调用A类注册给它的F函数。这里的F函数就是“回调函数”。A调用B，B反过来又调用A，这种调用机制就叫作“回调”  
+
+回到分为两种：  
+
+1、同步回调  
+
+在函数返回之前执行回调函数  
+
+2、异步回调
+
+在函数返回之后执行回调函数  
+
+如果做过支付的同学肯定很熟悉这个，例如微信支付，我们调用微信支付进行付款，成功之后我们的服务器会收到微信端支付的消息回调，然后进行支付成功之后的后续操作。  
+
+
+
+
 
 
 ### 参考
