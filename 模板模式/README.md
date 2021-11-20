@@ -8,6 +8,8 @@
   - [缺点](#%E7%BC%BA%E7%82%B9)
   - [适用范围](#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4)
   - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
+  - [回调](#%E5%9B%9E%E8%B0%83)
+    - [模板模式 VS 回调](#%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F-vs-%E5%9B%9E%E8%B0%83)
   - [参考](#%E5%8F%82%E8%80%83)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -148,7 +150,7 @@ func TestTestPaper(t *testing.T) {
 
 1、同步回调  
 
-在函数返回之前执行回调函数  
+在函数返回之前执行回调函数，同步回调看起来有点像模板模式  
 
 2、异步回调
 
@@ -156,10 +158,53 @@ func TestTestPaper(t *testing.T) {
 
 如果做过支付的同学肯定很熟悉这个，例如微信支付，我们调用微信支付进行付款，成功之后我们的服务器会收到微信端支付的消息回调，然后进行支付成功之后的后续操作。  
 
+上面的例子使用回调实现  
 
+```go
+type TestPaperCallback struct {
+}
 
+func (t *TestPaperCallback) testQuestion1() {
+	fmt.Println("问题1：中国有多少个民族")
+}
 
+func (t *TestPaperCallback) testQuestion2() {
+	fmt.Println("问题2：中国有多大")
+}
 
+func (t *TestPaperCallback) subCallback(callback CallbackImpl) {
+	t.testQuestion1()
+	t.testQuestion2()
+	callback.callback()
+}
+
+type CallbackImpl interface {
+	callback()
+}
+
+type student3 struct {
+	*TestPaperCallback
+}
+
+func (s *student3) callback() {
+	fmt.Println("答案1：56")
+	fmt.Println("答案2：测试")
+}
+
+func doPaperCallback(student *student3) {
+	student.subCallback(&student3{})
+}
+```
+
+#### 模板模式 VS 回调
+
+从应用场景上来看，同步回调跟模板模式几乎一致。它们都是在一个大的算法骨架中，自由替换其中的某个步骤，起到代码复用和扩展的目的。而异步回调跟模板模式有较大差别，更像是观察者模式。  
+
+从代码实现上来看，回调和模板模式完全不同。回调基于组合关系来实现，把一个对象传递给另一个对象，是一种对象之间的关系；模板模式基于继承关系来实现，子类重写父类的抽象方法，是一种类之间的关系。  
+
+- 回调可以使用匿名类来创建回调对象，可以不用事先定义类；而模板模式针对不同的实现都要定义不同的子类。  
+
+- 如果某个类中定义了多个模板方法，每个方法都有对应的抽象方法，那即便我们只用到其中的一个模板方法，子类也必须实现所有的抽象方法。而回调就更加灵活，我们只需要往用到的模板方法中注入回调对象即可。  
 
 ### 参考
 

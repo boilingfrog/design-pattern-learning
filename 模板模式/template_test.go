@@ -16,7 +16,5 @@ func TestTestPaper(t *testing.T) {
 
 func TestTestPaper_callback(t *testing.T) {
 	st1 := &student3{}
-
-	st1.answer()
-
+	doPaperCallback(st1)
 }
