@@ -150,7 +150,7 @@ func TestTestPaper(t *testing.T) {
 
 相对于普通的函数调用来说，回调是一种双向调用关系。A类事先注册某个函数F到B类，A类在调用B类的P函数的时候，B类反过来调用A类注册给它的F函数。这里的F函数就是“回调函数”。A调用B，B反过来又调用A，这种调用机制就叫作“回调”  
 
-回到分为两种：  
+回调分为两种：  
 
 1、同步回调  
 
@@ -162,7 +162,7 @@ func TestTestPaper(t *testing.T) {
 
 如果做过支付的同学肯定很熟悉这个，例如微信支付，我们调用微信支付进行付款，成功之后我们的服务器会收到微信端支付的消息回调，然后进行支付成功之后的后续操作。  
 
-上面的例子使用回调实现  
+上面的考试例子使用回调实现  
 
 ```go
 type testPaperCallback struct {
@@ -176,27 +176,27 @@ func (t *testPaperCallback) testQuestion2() {
 	fmt.Println("问题2：中国有多大")
 }
 
-func (t *testPaperCallback) SubCallback(callback CallbackImpl) {
+func (t *testPaperCallback) Answer(callback CallbackImpl) {
 	t.testQuestion1()
 	t.testQuestion2()
-	callback.Callback()
+	callback.AnswerCallback()
 }
 
 type CallbackImpl interface {
-	Callback()
+	AnswerCallback()
 }
 
 type student3 struct {
 	*testPaperCallback
 }
 
-func (s *student3) Callback() {
+func (s *student3) AnswerCallback() {
 	fmt.Println("答案1：56")
 	fmt.Println("答案2：测试")
 }
 
 func doPaperCallback(student *student3) {
-	student.SubCallback(&student3{})
+	student.Answer(&student3{})
 }
 ```
 
@@ -219,3 +219,4 @@ func doPaperCallback(student *student3) {
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/模板模式   
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001    
+【模板模式】https://boilingfrog.github.io/2021/11/20/%E4%BD%BF%E7%94%A8go%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/  
