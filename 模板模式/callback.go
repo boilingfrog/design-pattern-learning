@@ -13,25 +13,25 @@ func (t *testPaperCallback) testQuestion2() {
 	fmt.Println("问题2：中国有多大")
 }
 
-func (t *testPaperCallback) subCallback(callback CallbackImpl) {
+func (t *testPaperCallback) SubCallback(callback CallbackImpl) {
 	t.testQuestion1()
 	t.testQuestion2()
-	callback.callback()
+	callback.Callback()
 }
 
 type CallbackImpl interface {
-	callback()
+	Callback()
 }
 
 type student3 struct {
 	*testPaperCallback
 }
 
-func (s *student3) callback() {
+func (s *student3) Callback() {
 	fmt.Println("答案1：56")
 	fmt.Println("答案2：测试")
 }
 
 func doPaperCallback(student *student3) {
-	student.subCallback(&student3{})
+	student.SubCallback(&student3{})
 }
