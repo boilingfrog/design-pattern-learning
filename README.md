@@ -12,7 +12,9 @@
 
 [策略模式](https://www.cnblogs.com/ricklz/p/15464813.html)
 
-[观察者模式](https://www.cnblogs.com/ricklz/p/15573403.html)
+[观察者模式](https://www.cnblogs.com/ricklz/p/15573403.html)  
+
+[模板模式](https://www.cnblogs.com/ricklz/p/15582732.html)  
 
 #### 结构型模式
 
