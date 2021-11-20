@@ -9,21 +9,21 @@ type TestPaperImpl interface {
 	Answer2()
 }
 
-type TestPaper struct {
+type testPaper struct {
 }
 
-func (t *TestPaper) testQuestion1() {
+func (t *testPaper) testQuestion1() {
 	fmt.Println("问题：中国有多少个民族")
 }
 
-func (t *TestPaper) testQuestion2() {
+func (t *testPaper) testQuestion2() {
 	fmt.Println("问题：中国有多大")
 }
 
-func (t *TestPaper) Answer1() {
+func (t *testPaper) Answer1() {
 }
 
-func (t *TestPaper) Answer2() {
+func (t *testPaper) Answer2() {
 }
 
 // 封装具体步骤
@@ -36,7 +36,7 @@ func doPaper(paper TestPaperImpl) {
 }
 
 type student1 struct {
-	TestPaper
+	*testPaper
 }
 
 func (s *student1) Answer1() {
@@ -48,7 +48,7 @@ func (s *student1) Answer2() {
 }
 
 type student2 struct {
-	TestPaper
+	*testPaper
 }
 
 func (s *student2) Answer1() {

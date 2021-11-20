@@ -62,21 +62,21 @@ type TestPaperImpl interface {
 	Answer2()
 }
 
-type TestPaper struct {
+type testPaper struct {
 }
 
-func (t *TestPaper) testQuestion1() {
+func (t *testPaper) testQuestion1() {
 	fmt.Println("问题：中国有多少个民族")
 }
 
-func (t *TestPaper) testQuestion2() {
+func (t *testPaper) testQuestion2() {
 	fmt.Println("问题：中国有多大")
 }
 
-func (t *TestPaper) Answer1() {
+func (t *testPaper) Answer1() {
 }
 
-func (t *TestPaper) Answer2() {
+func (t *testPaper) Answer2() {
 }
 
 // 封装具体步骤
@@ -89,7 +89,7 @@ func doPaper(paper TestPaperImpl) {
 }
 
 type student1 struct {
-	TestPaper
+	*testPaper
 }
 
 func (s *student1) Answer1() {
@@ -101,7 +101,7 @@ func (s *student1) Answer2() {
 }
 
 type student2 struct {
-	TestPaper
+	*testPaper
 }
 
 func (s *student2) Answer1() {
@@ -161,18 +161,18 @@ func TestTestPaper(t *testing.T) {
 上面的例子使用回调实现  
 
 ```go
-type TestPaperCallback struct {
+type testPaperCallback struct {
 }
 
-func (t *TestPaperCallback) testQuestion1() {
+func (t *testPaperCallback) testQuestion1() {
 	fmt.Println("问题1：中国有多少个民族")
 }
 
-func (t *TestPaperCallback) testQuestion2() {
+func (t *testPaperCallback) testQuestion2() {
 	fmt.Println("问题2：中国有多大")
 }
 
-func (t *TestPaperCallback) subCallback(callback CallbackImpl) {
+func (t *testPaperCallback) subCallback(callback CallbackImpl) {
 	t.testQuestion1()
 	t.testQuestion2()
 	callback.callback()
@@ -183,7 +183,7 @@ type CallbackImpl interface {
 }
 
 type student3 struct {
-	*TestPaperCallback
+	*testPaperCallback
 }
 
 func (s *student3) callback() {
@@ -198,7 +198,7 @@ func doPaperCallback(student *student3) {
 
 #### 模板模式 VS 回调
 
-从应用场景上来看，同步回调跟模板模式几乎一致。它们都是在一个大的算法骨架中，自由替换其中的某个步骤，起到代码复用和扩展的目的。而异步回调跟模板模式有较大差别，更像是观察者模式。  
+从应用场景上来看，同步回调跟模板模式几乎一致。它们都是在一个大的算法骨架中，自由替换其中的某个步骤，起到代码复用和扩展的目的。而异步回调跟模板模式有较大差别，更像是观察者模式。  
 
 从代码实现上来看，回调和模板模式完全不同。回调基于组合关系来实现，把一个对象传递给另一个对象，是一种对象之间的关系；模板模式基于继承关系来实现，子类重写父类的抽象方法，是一种类之间的关系。  
 

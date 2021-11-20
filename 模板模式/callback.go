@@ -2,18 +2,18 @@ package 模板模式
 
 import "fmt"
 
-type TestPaperCallback struct {
+type testPaperCallback struct {
 }
 
-func (t *TestPaperCallback) testQuestion1() {
+func (t *testPaperCallback) testQuestion1() {
 	fmt.Println("问题1：中国有多少个民族")
 }
 
-func (t *TestPaperCallback) testQuestion2() {
+func (t *testPaperCallback) testQuestion2() {
 	fmt.Println("问题2：中国有多大")
 }
 
-func (t *TestPaperCallback) subCallback(callback CallbackImpl) {
+func (t *testPaperCallback) subCallback(callback CallbackImpl) {
 	t.testQuestion1()
 	t.testQuestion2()
 	callback.callback()
@@ -24,7 +24,7 @@ type CallbackImpl interface {
 }
 
 type student3 struct {
-	*TestPaperCallback
+	*testPaperCallback
 }
 
 func (s *student3) callback() {
