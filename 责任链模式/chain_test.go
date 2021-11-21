@@ -1,4 +1,4 @@
-package 职责链模式
+package 责任链模式
 
 import (
 	"testing"
