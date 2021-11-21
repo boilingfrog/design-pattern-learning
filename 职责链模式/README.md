@@ -22,19 +22,151 @@
 
 举个栗子  
 
-<img src="/img/pattern-processor.png" alt="responsibility" />  
+比如学生请假，小于等于 2 天班主任可以审批；小于等于 7 天，系主任可以审批；小于或等于 10 天，院长可以批准。其他情况，不予审批。   
 
+用责任链模式设计审批流程，每个审核者只关心自己责任范围内的请求，并且处理它。对于超出自己责任范围的，扔给下一个审核者处理，这样，将来继续添加审核者的时候，不用改动现有逻辑。  
+
+<img src="/img/pattern-processor.png" alt="responsibility" />  
 
 ### 优点
 
+1、降低耦合度。它将请求的发送者和接收者解耦；  
+
+2、简化了对象。使得对象不需要知道链的结构；  
+
+3、增强给对象指派职责的灵活性。通过改变链内的成员或者调动它们的次序，允许动态地新增或者删除责任；   
+
+4、增加新的请求处理类很方便。   
+
 ### 缺点
+
+不能保证请求一定被接收   
 
 ### 适用范围
 
+1、多个对象可以处理一个请求，但具体由哪个对象处理该请求在运行时自动确定；  
+
+2、可动态指定一组对象处理请求，或添加新的处理者；  
+
+3、需要在不明确指定请求处理者的情况下，向多个处理者中的一个提交请求。  
+
 ### 代码实现
+
+上面学生请假的栗子：  
+
+学生请假，小于等于 2 天班主任可以审批；小于等于 7 天，系主任可以审批；小于或等于 10 天，院长可以批准。其他情况，不予审批。   
+
+```go
+type Teacher interface {
+	HaveRight(day int) bool
+	HandleApproveRequest(name string, day int) bool
+}
+
+type RequestChain struct {
+	Teacher
+	approver *RequestChain
+}
+
+func (r *RequestChain) SetApprover(m *RequestChain) {
+	r.approver = m
+}
+
+func (r *RequestChain) HandleApproveRequest(name string, day int) bool {
+	if r.Teacher.HaveRight(day) {
+		return r.Teacher.HandleApproveRequest(name, day)
+	}
+	if r.approver != nil {
+		return r.approver.HandleApproveRequest(name, day)
+	}
+	fmt.Println("请假时间太久了，不予审批")
+	return false
+}
+
+func (r *RequestChain) HaveRight(day int) bool {
+	return true
+}
+
+type HeadTeacher struct{}
+
+func NewHeadTeacherChain() *RequestChain {
+	return &RequestChain{
+		Teacher: &HeadTeacher{},
+	}
+}
+
+func (*HeadTeacher) HaveRight(day int) bool {
+	return day <= 2
+}
+
+func (*HeadTeacher) HandleApproveRequest(name string, day int) bool {
+	fmt.Println(fmt.Sprintf("班主任，批准了%s的请假申请,请假天数%d", name, day))
+	return true
+}
+
+type DepTeacher struct{}
+
+func NewDepManagerChain() *RequestChain {
+	return &RequestChain{
+		Teacher: &DepTeacher{},
+	}
+}
+
+func (*DepTeacher) HaveRight(day int) bool {
+	return day <= 7
+}
+
+func (*DepTeacher) HandleApproveRequest(name string, day int) bool {
+	fmt.Println(fmt.Sprintf("系主任，批准了%s的请假申请,请假天数%d", name, day))
+	return true
+}
+
+type DeanTeacher struct{}
+
+func NewDeanTeacherChain() *RequestChain {
+	return &RequestChain{
+		Teacher: &DeanTeacher{},
+	}
+}
+
+func (*DeanTeacher) HaveRight(day int) bool {
+	return day <= 10
+}
+
+func (*DeanTeacher) HandleApproveRequest(name string, day int) bool {
+	fmt.Println(fmt.Sprintf("院长，批准了%s的请假申请,请假天数%d", name, day))
+	return true
+}
+```
+
+测试代码  
+
+```go
+func TestApproveChain(t *testing.T) {
+	c1 := NewHeadTeacherChain()
+	c2 := NewDepManagerChain()
+	c3 := NewDeanTeacherChain()
+
+	c1.SetApprover(c2)
+	c2.SetApprover(c3)
+
+	var c Teacher = c1
+	assert.Equal(t, true, c.HandleApproveRequest("小明", 3))
+	assert.Equal(t, true, c.HandleApproveRequest("小红", 2))
+	assert.Equal(t, false, c.HandleApproveRequest("小龙", 30))
+}
+```
+
+输出  
+
+```
+系主任，批准了小明的请假申请,请假天数3
+班主任，批准了小红的请假申请,请假天数2
+请假时间太久了，不予审批
+```
 
 ### 参考
 
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/职责链模式
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001   
+【责任链模式（职责链模式）详解】http://c.biancheng.net/view/1383.html   
