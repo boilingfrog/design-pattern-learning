@@ -16,8 +16,7 @@
 
 ### 定义
 
-责任链模式(Chain Of Responsibility):使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的藕合关系。将这个对象连城一条链，并沿着这条链
-传递该请求，知道一个对象处理完为止。   
+责任链模式(Chain Of Responsibility):使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的藕合关系。将这个对象连成一条链，并沿着这条链传递该请求，直到一个对象处理完为止。   
 
 是一种处理请求的模式，它让多个处理器都有机会处理该请求，直到其中某个处理成功为止。责任链模式把多个处理器串成链，然后让请求在链上传递。   
 
@@ -179,3 +178,4 @@ func TestApproveChain(t *testing.T) {
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001   
 【责任链模式（责任链模式）详解】http://c.biancheng.net/view/1383.html   
+【责任链模式】https://boilingfrog.github.io/2021/11/22/%E4%BD%BF%E7%94%A8go%E5%AE%9E%E7%8E%B0%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F/  
