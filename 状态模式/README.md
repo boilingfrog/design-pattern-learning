@@ -181,6 +181,10 @@ func TestCompanyEmployee(t *testing.T) {
 员工的职级 groupLeader ;员工的薪水 2000 ;员工的待遇 [休假，年终奖 绩效奖金]
 ```
 
+结构图  
+
+<img src="/img/pattern-state.png" alt="state" />
+
 ### 参考
 
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/状态模式    
