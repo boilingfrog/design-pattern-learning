@@ -18,6 +18,8 @@
 
 [责任链模式](https://www.cnblogs.com/ricklz/p/15586978.html)  
 
+[状态模式](https://www.cnblogs.com/ricklz/p/15593975.html)     
+
 #### 结构型模式
 
 [桥接模式](https://www.cnblogs.com/ricklz/p/15538606.html)  
