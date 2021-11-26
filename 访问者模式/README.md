@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [访问者模式](#%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F)
+  - [定义](#%E5%AE%9A%E4%B9%89)
+  - [优点](#%E4%BC%98%E7%82%B9)
+  - [缺点](#%E7%BC%BA%E7%82%B9)
+  - [适用范围](#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4)
+  - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
+  - [什么是 Double Dispatch](#%E4%BB%80%E4%B9%88%E6%98%AF-double-dispatch)
+  - [参考](#%E5%8F%82%E8%80%83)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## 访问者模式
 
 ### 定义
@@ -100,8 +115,25 @@ func TestVisitor(t *testing.T) {
 
 <img src="/img/pattern-visitor.png" alt="visitor" />  
 
+### 什么是 Double Dispatch  
+
+什么是分派？  
+
+分派即 Dispatch，在面向对象编程语言中，我们可以把方法调用理解为一种消息传递（Dispatch）。一个对象调用另一个对象的方法，相当于给被调用对象发送一个消息，这个消息包括对象名、方法名、方法参数等信息。  
+
+什么是单分派？  
+
+单分派，即执行哪个对象的方法，根据对象的运行时类型决定；执行对象的哪个方法，根据方法参数的编译时类型决定。  
+
+什么是双分派？  
+
+双分派，即执行哪个对象的方法，根据对象的运行时类型来决定；执行对象的哪个方法，根据方法参数的运行时的类型来决定。  
+
+具体到编程语言的语法机制，Single Dispatch 和 Double Dispatch 跟多态和函数重载直接相关。  
+
 ### 参考
 
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/访问者模式    
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001   
+【双分派-访问者模式的前世今生】https://www.codenong.com/cs110749395/    
