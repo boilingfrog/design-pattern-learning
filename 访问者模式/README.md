@@ -131,6 +131,77 @@ func TestVisitor(t *testing.T) {
 
 具体到编程语言的语法机制，Single Dispatch 和 Double Dispatch 跟多态和函数重载直接相关。  
 
+比如java就不支持双分派  
+
+```
+import java.util.ArrayList;
+import java.util.List;
+
+abstract class ResourceFile {
+    protected String filePath;
+
+    public ResourceFile(String filePath) {
+        this.filePath = filePath;
+    }
+}
+
+class PdfFile extends ResourceFile {
+    public PdfFile(String filePath) {
+        super(filePath);
+    }
+}
+
+class PPTFile extends ResourceFile {
+    public PPTFile(String filePath) {
+        super(filePath);
+    }
+}
+
+//...PPTFile、WordFile代码省略...
+class Extractor {
+
+    public void extract2txt(PdfFile pdfFile) {
+        System.out.println("Extract PDF.");
+    }
+
+    public void extract2txt(PPTFile ppTFile) {
+        System.out.println("Extract PPT.");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Extractor extractor = new Extractor();
+        List<ResourceFile> resourceFiles = listAllResourceFiles();
+
+        for (ResourceFile resourceFile : resourceFiles) {
+            extractor.extract2txt(resourceFile);
+        }
+    }
+
+    private static List<ResourceFile> listAllResourceFiles() {
+        List<ResourceFile> resourceFiles = new ArrayList<>();
+        //...根据后缀(pdf/ppt/word)由工厂方法创建不同的类对象(PdfFile/PPTFile/WordFile)
+        resourceFiles.add(new PPTFile("a.ppt"));
+        resourceFiles.add(new PdfFile("a.pdf"));
+
+        return resourceFiles;
+    }
+}
+```
+
+比如这段代码，就会在`extractor.extract2txt(resourceFile);`，代码会在运行时，根据参数（resourceFile）的实际类型（PdfFile、PPTFile、WordFile），来决定使用extract2txt的三个重载函数中的哪一个。那下面的代码实现就能正常运行了。   
+
+报错信息   
+
+```
+java: 对于extract2txt(ResourceFile), 找不到合适的方法
+    方法 Extractor.extract2txt(PdfFile)不适用
+      (参数不匹配; ResourceFile无法转换为PdfFile)
+    方法 Extractor.extract2txt(PPTFile)不适用
+      (参数不匹配; ResourceFile无法转换为PPTFile)
+```
+
 ### 参考
 
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/访问者模式    
