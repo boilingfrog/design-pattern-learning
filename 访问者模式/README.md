@@ -129,9 +129,11 @@ func TestVisitor(t *testing.T) {
 
 双分派，即执行哪个对象的方法，根据对象的运行时类型来决定；执行对象的哪个方法，根据方法参数的运行时的类型来决定。  
 
-具体到编程语言的语法机制，Single Dispatch 和 Double Dispatch 跟多态和函数重载直接相关。  
+具体到编程语言的语法机制，Single Dispatch 和 Double Dispatch 跟多态和函数重载直接相关。所以 go 是不支持双分派的。  
 
-比如java就不支持双分派  
+当前主流的面向对象编程语言（比如，Java、C++、C#）都只支持Single Dispatch，不支持Double Dispatch。   
+
+使用 java 举栗子更容易理解：      
 
 ```
 import java.util.ArrayList;
