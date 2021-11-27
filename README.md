@@ -22,6 +22,8 @@
 
 [迭代器模式](https://www.cnblogs.com/ricklz/p/15599791.html)       
 
+[访问者模式](https://www.cnblogs.com/ricklz/p/15609777.html)  
+
 #### 结构型模式
 
 [桥接模式](https://www.cnblogs.com/ricklz/p/15538606.html)  
