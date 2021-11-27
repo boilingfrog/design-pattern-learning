@@ -24,6 +24,8 @@
 
 [访问者模式](https://www.cnblogs.com/ricklz/p/15609777.html)  
 
+[备忘录模式](https://www.cnblogs.com/ricklz/p/15613073.html)     
+
 #### 结构型模式
 
 [桥接模式](https://www.cnblogs.com/ricklz/p/15538606.html)  

@@ -12,21 +12,21 @@ type videoMemento struct {
 	time int
 }
 
-func (g *Video) Watch(time int) {
-	g.time += time
+func (v *Video) Watch(time int) {
+	v.time += time
 }
 
-func (g *Video) Save() Memento {
+func (v *Video) Save() Memento {
 	return &videoMemento{
-		time: g.time,
+		time: v.time,
 	}
 }
 
-func (g *Video) Load(m Memento) {
+func (v *Video) Load(m Memento) {
 	gm := m.(*videoMemento)
-	g.time = gm.time
+	v.time = gm.time
 }
 
-func (g *Video) Status() string {
-	return fmt.Sprintf("video watch time:%d", g.time)
+func (v *Video) Status() string {
+	return fmt.Sprintf("video watch time:%d", v.time)
 }
