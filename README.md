@@ -26,6 +26,8 @@
 
 [备忘录模式](https://www.cnblogs.com/ricklz/p/15613073.html)     
 
+[命令模式](https://www.cnblogs.com/ricklz/p/15618983.html)     
+
 #### 结构型模式
 
 [桥接模式](https://www.cnblogs.com/ricklz/p/15538606.html)  
