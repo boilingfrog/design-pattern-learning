@@ -26,6 +26,68 @@
 
 ### 代码实现
 
+```go
+type Receiver struct {
+}
+
+func (*Receiver) Action() {
+	fmt.Println("执行命令")
+}
+
+type Command struct {
+	receiver Receiver
+}
+
+func NewCommand(receiver Receiver) *Command {
+	return &Command{
+		receiver: receiver,
+	}
+}
+
+type CommandImpl interface {
+	Execute()
+}
+
+type ConcreteCommand struct {
+	*Command
+}
+
+func NewConcreteCommand(receiver Receiver) *ConcreteCommand {
+	return &ConcreteCommand{
+		NewCommand(receiver),
+	}
+}
+
+func (cc *ConcreteCommand) Execute() {
+	cc.receiver.Action()
+}
+
+type Invoker struct {
+	command CommandImpl
+}
+
+func (ik *Invoker) ExecuteCommand() {
+	ik.command.Execute()
+}
+
+func (ik *Invoker) SetCommand(command CommandImpl) {
+	ik.command = command
+}
+```
+
+测试文件  
+
+```go
+func TestNewCommand(t *testing.T) {
+	r := Receiver{}
+	concreteCommand := NewConcreteCommand(r)
+
+	invoker := Invoker{}
+	invoker.SetCommand(concreteCommand)
+	invoker.ExecuteCommand()
+}
+```
+
 ### 参考
 
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/命令模式       
