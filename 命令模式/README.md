@@ -88,6 +88,10 @@ func TestNewCommand(t *testing.T) {
 }
 ```
 
+结构图  
+
+<img src="/img/pattern-command.png" alt="command" />
+
 ### 参考
 
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/命令模式       
