@@ -92,6 +92,16 @@ func TestNewCommand(t *testing.T) {
 
 <img src="/img/pattern-command.png" alt="command" />
 
+### 命令模式对比策略模式
+
+对于一些相似的设计模式的区分，我们应该关注设计意图，应用场景的不同，而不是只看解决方案这一部分，或者只关注代码实现。单看实现，一些设计模式确实很相似，比较难区分。    
+
+从设计意图区分：  
+
+策略模式：不同的策略具有相同的目的、不同的实现、互相之间可以替换。  
+
+命令模式：不同的命令具有不同的目的，对应不同的处理逻辑，并且互相之间不可替换。    
+
 ### 参考
 
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/命令模式       
