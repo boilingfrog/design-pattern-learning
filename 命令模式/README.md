@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [命令模式](#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F)
+  - [定义](#%E5%AE%9A%E4%B9%89)
+  - [优点](#%E4%BC%98%E7%82%B9)
+  - [缺点](#%E7%BC%BA%E7%82%B9)
+  - [适用范围](#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4)
+  - [代码实现](#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
+  - [命令模式对比策略模式](#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F)
+  - [参考](#%E5%8F%82%E8%80%83)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## 命令模式
 
 ### 定义
