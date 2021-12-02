@@ -35,6 +35,8 @@
 
 ### 代码实现
 
+比如美国和伊拉克的安全问题，联合国安全理事对其进行协调。     
+
 ```go
 type Country interface {
 	SendMess(message string)
@@ -109,6 +111,10 @@ func TestMediator_ForwardMessage(t *testing.T) {
 Irap 获得对方的消息： 不准研制核武器，否则要发动战争了
 USA 获得对方的消息： 我们没有核武器
 ```
+
+结构图  
+
+<img src="/img/pattern-mediator.png" alt="mediator" />
 
 ### 参考
 
