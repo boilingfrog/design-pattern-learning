@@ -21,7 +21,7 @@
 
 这里发放一张王争大佬极客时间的一张对比图片  
 
-<img src="mediator.go" alt="mediator" />
+<img src="/img/mediator.jpeg" alt="mediator" />
  
 ### 优点
 
