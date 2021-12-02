@@ -125,3 +125,4 @@ USA 获得对方的消息： 我们没有核武器
 【文中代码】https://github.com/boilingfrog/design-pattern-learning/tree/master/中介模式    
 【大话设计模式】https://book.douban.com/subject/2334288/  
 【极客时间】https://time.geekbang.org/column/intro/100039001   
+【中介模式】https://boilingfrog.github.io/2021/12/01/%E4%BD%BF%E7%94%A8go%E5%AE%9E%E7%8E%B0%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/    
