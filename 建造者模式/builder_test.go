@@ -3,8 +3,8 @@ package 建造者模式
 import (
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/tj/assert"
 )
 
 // IntP return pointer

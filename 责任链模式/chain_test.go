@@ -3,7 +3,7 @@ package 责任链模式
 import (
 	"testing"
 
-	"github.com/tj/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestApproveChain(t *testing.T) {
